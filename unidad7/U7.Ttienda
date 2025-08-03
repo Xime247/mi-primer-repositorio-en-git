@@ -1,0 +1,86 @@
+Algoritmo TiendaDeRopa
+	Definir opcion, cantidad, stock_camisa, stock_pantalon, stock_chamarra, stock_sudadera, stock_playera Como Entero
+	Definir precio, total_compra Como Real
+	Definir continuar Como Lógico
+	// Inventario
+	stock_camisa <- 20
+	stock_pantalon <- 20
+	stock_chamarra <- 20
+	stock_sudadera <- 20
+	stock_playera <- 20
+	total_compra <- 0
+	continuar <- Verdadero
+	Mientras continuar Hacer
+		Escribir ''
+		Escribir '=== Menú de compras ==='
+		Escribir '1. Camisa ($200)'
+		Escribir '2. Pantalón ($350)'
+		Escribir '3. Chamarra ($500)'
+		Escribir '4. Sudadera ($250)'
+		Escribir '5. Playera ($200)'
+		Escribir '0. Terminar compra'
+		Escribir 'Escribe solo números del 0 al 5:'
+		Leer opcion
+		Si opcion=0 Entonces
+			continuar <- Falso
+		SiNo
+			Si opcion>=1 Y opcion<=5 Entonces
+				Escribir '¿Cuántos desea comprar?'
+				Leer cantidad
+				Según opcion Hacer
+					1:
+						Si cantidad<=stock_camisa Entonces
+							precio <- 200
+							total_compra <- total_compra+(precio*cantidad)
+							stock_camisa <- stock_camisa-cantidad
+						SiNo
+							Escribir 'Stock insuficiente.'
+						FinSi
+					2:
+						Si cantidad<=stock_pantalon Entonces
+							precio <- 350
+							total_compra <- total_compra+(precio*cantidad)
+							stock_pantalon <- stock_pantalon-cantidad
+						SiNo
+							Escribir 'Stock insuficiente.'
+						FinSi
+					3:
+						Si cantidad<=stock_chamarra Entonces
+							precio <- 500
+							total_compra <- total_compra+(precio*cantidad)
+							stock_chamarra <- stock_chamarra-cantidad
+						SiNo
+							Escribir 'Stock insuficiente.'
+						FinSi
+					4:
+						Si cantidad<=stock_sudadera Entonces
+							precio <- 250
+							total_compra <- total_compra+(precio*cantidad)
+							stock_sudadera <- stock_sudadera-cantidad
+						SiNo
+							Escribir 'Stock insuficiente.'
+						FinSi
+					5:
+						Si cantidad<=stock_playera Entonces
+							precio <- 200
+							total_compra <- total_compra+(precio*cantidad)
+							stock_playera <- stock_playera-cantidad
+						SiNo
+							Escribir 'Stock insuficiente.'
+						FinSi
+				FinSegún
+			SiNo
+				Escribir 'Opción inválida. Por favor ingresa solo números del 0 al 5.'
+			FinSi
+		FinSi
+	FinMientras
+	Escribir ''
+	Escribir '=== Compra finalizada ==='
+	Escribir 'Total a pagar: $', total_compra
+	Escribir 'Stock restante:'
+	Escribir 'Camisas: ', stock_camisa
+	Escribir 'Pantalones: ', stock_pantalon
+	Escribir 'Chamarras: ', stock_chamarra
+	Escribir 'Sudaderas: ', stock_sudadera
+	Escribir 'Playeras: ', stock_playera
+FinAlgoritmo

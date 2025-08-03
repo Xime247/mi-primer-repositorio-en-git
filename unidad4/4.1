@@ -1,0 +1,61 @@
+Proceso EncontrarDuplicados
+	
+    Escribir "Ingrese el tamaño del arreglo:";
+    Leer n;
+    Dimension arregloOriginal[n];
+	
+    Escribir "Ingrese los elementos del arreglo:";
+    Para i = 1 Hasta n Con Paso 1 Hacer
+        Leer arregloOriginal[i];
+    FinPara
+	
+    Dimension arregloDuplicados[n];
+    Dimension contador[n];
+	
+    // Inicializar el contador para cada número
+    Para i = 1 Hasta n Con Paso 1 Hacer
+        contador[i] = 0;
+    FinPara
+	
+    // Contar las ocurrencias de cada número
+    Para i = 1 Hasta n Con Paso 1 Hacer
+        Para j = 1 Hasta n Con Paso 1 Hacer
+            Si arregloOriginal[i] == arregloOriginal[j] Entonces
+                contador[i] = contador[i] + 1;
+            FinSi
+        FinPara
+    FinPara
+	
+    // Crear el arreglo de duplicados solo con los que se repiten dos veces
+    k = 1; // Índice para el arreglo de duplicados
+    Para i = 1 Hasta n Con Paso 1 Hacer
+        Si contador[i] > 1 Entonces
+            repetido = Falso;
+            Para j = 1 Hasta k-1 Con Paso 1 Hacer
+                Si arregloDuplicados[j] == arregloOriginal[i] Entonces
+                    repetido = Verdadero;
+                FinSi
+            FinPara
+            Si repetido == Falso Entonces
+                arregloDuplicados[k] = arregloOriginal[i];
+                k = k + 1;
+            FinSi
+        FinSi
+    FinPara
+	
+    // Ajustar el tamaño del arreglo de duplicados
+    Dimension aux[k-1];
+    Para i = 1 Hasta k-1 Con Paso 1 Hacer
+        aux[i] = arregloDuplicados[i];
+    FinPara
+	
+    // Mostrar el arreglo de duplicados
+    Si k > 1 Entonces
+        Escribir "Arreglo de duplicados:";
+        Para i = 1 Hasta k-1 Con Paso 1 Hacer
+            Escribir aux[i];
+        FinPara
+    Sino
+        Escribir "No se encontraron duplicados.";
+    FinSi
+FinProceso

@@ -1,0 +1,106 @@
+Algoritmo DispensadoraDeBilletes
+	
+    // Variables del inventario
+    Definir billetes_20, billetes_50, billetes_100, billetes_200, billetes_500, billetes_1000 Como Entero;
+    // Variables de control
+    Definir importe, opcion, continuar Como Entero;
+    Definir b1000, b500, b200, b100, b50, b20 Como Entero;
+	
+    // Inicializar inventario
+    billetes_20 = 10;
+    billetes_50 = 10;
+    billetes_100 = 10;
+    billetes_200 = 10;
+    billetes_500 = 10;
+    billetes_1000 = 10;
+    continuar = 1; // 1 = seguir, 0 = salir
+	
+    Mientras continuar = 1 Hacer
+        Escribir "--------- MENÚ ---------";
+        Escribir "1. Dispensar billetes";
+        Escribir "2. Ver inventario";
+        Escribir "3. Salir";
+        Escribir "Seleccione una opción:";
+        Leer opcion;
+		
+        Segun opcion Hacer
+            1:
+                Escribir "Ingrese el importe a dispensar (múltiplo de 10):";
+                Leer importe;
+				
+                b1000 = 0; b500 = 0; b200 = 0; b100 = 0; b50 = 0; b20 = 0;
+				
+                Si importe MOD 10 <> 0 Entonces
+                    Escribir "El importe debe ser múltiplo de 10.";
+                Sino
+                    Mientras importe >= 1000 Y billetes_1000 > 0
+                        importe = importe - 1000;
+                        billetes_1000 = billetes_1000 - 1;
+                        b1000 = b1000 + 1;
+                    FinMientras
+					
+                    Mientras importe >= 500 Y billetes_500 > 0
+                        importe = importe - 500;
+                        billetes_500 = billetes_500 - 1;
+                        b500 = b500 + 1;
+                    FinMientras
+					
+                    Mientras importe >= 200 Y billetes_200 > 0
+                        importe = importe - 200;
+                        billetes_200 = billetes_200 - 1;
+                        b200 = b200 + 1;
+                    FinMientras
+					
+                    Mientras importe >= 100 Y billetes_100 > 0
+                        importe = importe - 100;
+                        billetes_100 = billetes_100 - 1;
+                        b100 = b100 + 1;
+                    FinMientras
+					
+                    Mientras importe >= 50 Y billetes_50 > 0
+                        importe = importe - 50;
+                        billetes_50 = billetes_50 - 1;
+                        b50 = b50 + 1;
+                    FinMientras
+					
+                    Mientras importe >= 20 Y billetes_20 > 0
+                        importe = importe - 20;
+                        billetes_20 = billetes_20 - 1;
+                        b20 = b20 + 1;
+                    FinMientras
+					
+                    Si importe > 0 Entonces
+                        Escribir "No hay suficientes billetes para dispensar el importe solicitado.";
+                        billetes_1000 = billetes_1000 + b1000;
+                        billetes_500 = billetes_500 + b500;
+                        billetes_200 = billetes_200 + b200;
+                        billetes_100 = billetes_100 + b100;
+                        billetes_50 = billetes_50 + b50;
+                        billetes_20 = billetes_20 + b20;
+                    Sino
+                        Escribir "Billetes dispensados:";
+                        Si b1000 > 0 Entonces Escribir "Billetes de 1000: ", b1000; FinSi
+                        Si b500 > 0 Entonces Escribir "Billetes de 500: ", b500; FinSi
+                        Si b200 > 0 Entonces Escribir "Billetes de 200: ", b200; FinSi
+                        Si b100 > 0 Entonces Escribir "Billetes de 100: ", b100; FinSi
+                        Si b50 > 0 Entonces Escribir "Billetes de 50: ", b50; FinSi
+                        Si b20 > 0 Entonces Escribir "Billetes de 20: ", b20; FinSi
+                    FinSi
+                FinSi
+            2:
+                Escribir "Inventario actual:";
+                Escribir "Billetes de 1000: ", billetes_1000;
+                Escribir "Billetes de 500: ", billetes_500;
+                Escribir "Billetes de 200: ", billetes_200;
+                Escribir "Billetes de 100: ", billetes_100;
+                Escribir "Billetes de 50: ", billetes_50;
+                Escribir "Billetes de 20: ", billetes_20;
+            3:
+                Escribir "¡Adiós!";
+                continuar = 0; // Aquí se detiene el ciclo
+            De Otro Modo:
+                Escribir "Opción inválida. Intente de nuevo.";
+        FinSegun
+    FinMientras
+	
+FinAlgoritmo

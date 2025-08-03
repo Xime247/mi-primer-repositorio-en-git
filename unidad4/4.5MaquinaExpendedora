@@ -1,0 +1,101 @@
+Proceso MaquinaExpendedora
+	
+    Definir comando Como Cadena
+    Definir importe, moneda, precio Como Entero
+    Definir devolver, m20, m10, m5, m2, m1 Como Entero
+	
+    importe <- 0
+	
+    Repetir
+        Escribir ""
+        Escribir "Ingresa una moneda (1, 2, 5, 10, 20), un código de producto (A1, B2, C3, D4), RETIRAR o PARA:"
+        Leer comando
+		
+        // Verificar si es una moneda
+        Si comando = "1" Entonces
+            importe <- importe + 1
+            Escribir "Importe actual: ", importe, " pesos"
+        Sino
+            Si comando = "2" Entonces
+                importe <- importe + 2
+                Escribir "Importe actual: ", importe, " pesos"
+            Sino
+                Si comando = "5" Entonces
+                    importe <- importe + 5
+                    Escribir "Importe actual: ", importe, " pesos"
+                Sino
+                    Si comando = "10" Entonces
+                        importe <- importe + 10
+                        Escribir "Importe actual: ", importe, " pesos"
+                    Sino
+                        Si comando = "20" Entonces
+                            importe <- importe + 20
+                            Escribir "Importe actual: ", importe, " pesos"
+                        Sino
+                            // Productos
+                            Si comando = "A1" Entonces
+                                precio <- 15
+                                Si importe >= precio Entonces
+                                    Escribir "Producto A1 dispensado. Gracias por tu compra."
+                                    importe <- importe - precio
+                                Sino
+                                    Escribir "Saldo insuficiente. Precio: ", precio
+                                FinSi
+                            Sino
+                                Si comando = "B2" Entonces
+                                    precio <- 10
+                                    Si importe >= precio Entonces
+                                        Escribir "Producto B2 dispensado. Gracias por tu compra."
+                                        importe <- importe - precio
+                                    Sino
+                                        Escribir "Saldo insuficiente. Precio: ", precio
+                                    FinSi
+                                Sino
+                                    Si comando = "C3" Entonces
+                                        precio <- 20
+                                        Si importe >= precio Entonces
+                                            Escribir "Producto C3 dispensado. Gracias por tu compra."
+                                            importe <- importe - precio
+                                        Sino
+                                            Escribir "Saldo insuficiente. Precio: ", precio
+                                        FinSi
+                                    Sino
+                                        Si comando = "D4" Entonces
+                                            precio <- 12
+                                            Si importe >= precio Entonces
+                                                Escribir "Producto D4 dispensado. Gracias por tu compra."
+                                                importe <- importe - precio
+                                            Sino
+                                                Escribir "Saldo insuficiente. Precio: ", precio
+                                            FinSi
+                                        Sino
+                                            // Comando RETIRAR
+                                            Si comando = "RETIRAR" Entonces
+                                                Si importe > 0 Entonces
+                                                    Escribir "Operación cancelada. Se devuelven ", importe total, "pesos"
+                                                    devolver <- importe
+													Escribir "Programa finalizado. Gracias." 
+													
+                                                Sino
+                                                    Escribir "No hay saldo para devolver."
+                                                FinSi
+                                            Sino
+                                                Si comando <> "PARA" Entonces
+                                                    Escribir "Comando no válido. Inténtalo de nuevo."
+                                                FinSi
+                                            FinSi
+                                        FinSi
+                                    FinSi
+                                FinSi
+                            FinSi
+                        FinSi
+                    FinSi
+                FinSi
+            FinSi
+        FinSi
+		
+    Hasta Que comando = "PARA"
+	
+    Escribir "Programa finalizado. Gracias."
+	
+FinProceso

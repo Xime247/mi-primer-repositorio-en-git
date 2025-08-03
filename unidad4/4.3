@@ -1,0 +1,72 @@
+Algoritmo CalculadoraEdad
+	
+	
+    Definir fecha_nac, fecha_actual Como Texto;
+    Definir dia_nac, mes_nac, anio_nac, dia_actual, mes_actual, anio_actual, edad Como Entero;
+    Definir fecha_valida Como Logico;
+	
+    // Solicitar fecha de nacimiento
+    fecha_valida = Falso;
+    Mientras !fecha_valida
+        Escribir "Ingrese la fecha de nacimiento (DD/MM/AAAA):";
+        Leer fecha_nac;
+        dia_nac = ConvertirANumero(Subcadena(fecha_nac, 1, 2));
+        mes_nac = ConvertirANumero(Subcadena(fecha_nac, 4, 5));
+        anio_nac = ConvertirANumero(Subcadena(fecha_nac, 7, 10));
+        fecha_valida = ValidarFecha(dia_nac, mes_nac, anio_nac);
+        Si !fecha_valida Entonces
+            Escribir "Fecha inválida. Por favor, ingrese nuevamente.";
+        FinSi
+    FinMientras
+	
+	
+	
+	
+    // Solicitar fecha actual
+    fecha_valida = Falso;
+    Mientras !fecha_valida
+        Escribir "Ingrese la fecha actual (DD/MM/AAAA):";
+        Leer fecha_actual;
+        dia_actual = ConvertirANumero(Subcadena(fecha_actual, 1, 2));
+        mes_actual = ConvertirANumero(Subcadena(fecha_actual, 4, 5));
+        anio_actual = ConvertirANumero(Subcadena(fecha_actual, 7, 10));
+        fecha_valida = ValidarFecha(dia_actual, mes_actual, anio_actual);
+        Si !fecha_valida Entonces
+            Escribir "Fecha actual inválida. Por favor, ingrese nuevamente.";
+        FinSi
+    FinMientras
+    // Calcular edad
+    edad = anio_actual - anio_nac;
+    // Validar si ya cumplió años
+    Si (mes_actual < mes_nac) O (mes_actual == mes_nac Y dia_actual < dia_nac) Entonces
+        edad = edad - 1;
+    FinSi
+    // Mostrar resultados
+    Escribir "La edad es: ", edad, " años";
+FinAlgoritmo
+
+Funcion fecha_valida = ValidarFecha(dia, mes, anio)
+    fecha_valida = Verdadero;
+    // Validar año
+    Si anio <= 1900 Entonces
+        fecha_valida = Falso;
+    FinSi
+	
+    // Validar mes
+    Si mes < 1 O mes > 12 Entonces
+        fecha_valida = Falso;
+    FinSi
+	
+    // Validar día
+    Si dia < 1 O dia > 31 Entonces
+        fecha_valida = Falso;
+    FinSi
+	
+    // Validar días de cada mes
+    Si (mes == 4 O mes == 6 O mes == 9 O mes == 11) Y dia > 30 Entonces
+        fecha_valida = Falso;
+    FinSi
+    Si mes == 2 Y dia > 28 Entonces
+        fecha_valida = Falso;
+    FinSi
+FinFuncion

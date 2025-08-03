@@ -1,0 +1,31 @@
+Algoritmo InvertirCadenaYPalindromo
+	
+    Definir cadena, cadenaInvertida como texto;
+    Definir i como entero;
+    Definir esPalindromo como logico;
+	
+    Escribir "Ingrese una cadena de texto:";
+    Leer cadena;
+	
+    // Invertir la cadena
+    cadenaInvertida = "";
+    Para i = Longitud(cadena) hasta 1 con paso -1 Hacer
+        cadenaInvertida = cadenaInvertida + Subcadena(cadena, i, i);
+    FinPara
+	
+    Escribir "La cadena invertida es: ", cadenaInvertida;
+	
+    // Verificar si es palíndromo
+    esPalindromo = Verdadero;
+    cadena = Minusculas(cadena);
+    cadenaInvertida = Minusculas(cadenaInvertida);
+    Si cadena <> cadenaInvertida Entonces
+        esPalindromo = Falso;
+    FinSi
+	
+    Si esPalindromo Entonces
+        Escribir "VERDADERO es un palíndromo.";
+    Sino
+        Escribir "FALSO no es un palíndromo.";
+    FinSi
+FinAlgoritmo
